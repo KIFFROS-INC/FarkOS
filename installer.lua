@@ -62,7 +62,7 @@ MakeFolder('core', 'farks/')
 
 OK('Made the required folder.')
 INFO('Installing OS.')
-NetInstall('https://kiffros-inc.github.io/FarkOS/FarksOS.lua', 'FarkOS.lua')
+NetInstall('https://kiffros-inc.github.io/FarkOS/FarksOS.lua', 'FarksOS.lua')
 
 NetInstall('https://kiffros-inc.github.io/FarkOS/farks/commands/echo.lua', '/farks/commands/echo.lua')
 NetInstall('https://kiffros-inc.github.io/FarkOS/farks/commands/play.lua', '/farks/commands/play.lua')
@@ -71,4 +71,16 @@ NetInstall('https://kiffros-inc.github.io/FarkOS/farks/core/regfk.lua', '/farks/
 NetInstall('https://kiffros-inc.github.io/FarkOS/farks/core/soundplayer.lua', '/farks/core/soundplayer.lua')
 
 NetInstall('https://kiffros-inc.github.io/FarkOS/startup.lua', 'startup')
+
+INFO('Preparing Keys')
+
+local RegFK = require('farks.core.regfk')
+
+RegFK.SetKey('__VERSION__', '24.6', true)
+RegFK.SetKey('__BUILD__', 'alpha-0001', true)
+RegFK.SetKey('__OSNAME__', 'FarksOS', true)
+
 OK('FarkOS Installed.')
+print('Press enter to reboot.')
+read()
+os.reboot()
